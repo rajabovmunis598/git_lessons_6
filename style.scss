@@ -1,0 +1,269 @@
+$blue:       #0f3460;
+$blue-light: #dbeafe;
+$white:      #ffffff;
+$gray:       #666;
+$font:       'Georgia', serif;
+
+@mixin flex($align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin fadeUp($delay: 0s) {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: $delay;
+}
+
+@mixin fadeRight($delay: 0s) {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: fadeRight 0.8s ease forwards;
+  animation-delay: $delay;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes slideCard {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font;
+}
+
+.hero {
+  min-height: 100vh;
+  background: $white;
+  padding: 0 60px;
+
+  &__content {
+    @include flex(center, space-between, 40px);
+    padding-top: 40px;
+  }
+}
+
+.nav {
+  @include flex(center, space-between);
+  padding: 20px 0;
+  @include fadeUp(0s);
+
+  &__logo {
+    @include flex(center, flex-start, 8px);
+  }
+
+  &__logo-icon {
+    width: 32px;
+    height: 32px;
+    background: $blue;
+    color: $white;
+    border-radius: 50%;
+    @include flex(center, center);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: $blue;
+  }
+
+  &__links {
+    @include flex(center, center, 32px);
+  }
+
+  &__link {
+    font-size: 13px;
+    color: $gray;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  &__search {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: $gray;
+  }
+}
+
+.hero__left {
+  max-width: 520px;
+  @include flex(flex-start, center, 0px);
+  flex-direction: column;
+}
+
+.hero__badge {
+  @include flex(center, flex-start, 10px);
+  margin-bottom: 24px;
+  @include fadeUp(0.1s);
+
+  &-new {
+    background: $blue;
+    color: $white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  &-text {
+    font-size: 13px;
+    color: $gray;
+  }
+}
+
+.hero__title {
+  font-size: 54px;
+  font-weight: 900;
+  color: $blue;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  @include fadeUp(0.2s);
+}
+
+.hero__sub {
+  font-size: 15px;
+  color: $gray;
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 32px;
+  @include fadeUp(0.3s);
+}
+
+.hero__btn {
+  padding: 16px 36px;
+  background: $blue;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-bottom: 48px;
+  animation: pulse 2.5s ease-in-out infinite;
+  @include fadeUp(0.4s);
+
+  &:hover {
+    background: darken($blue, 8%);
+  }
+}
+
+.hero__trusted {
+  @include fadeUp(0.5s);
+
+  &-text {
+    font-size: 13px;
+    color: $gray;
+    margin-bottom: 14px;
+  }
+}
+
+.hero__logos {
+  @include flex(center, flex-start, 20px);
+  flex-wrap: wrap;
+}
+
+.hero__logo {
+  height: 28px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+
+.hero__right {
+  position: relative;
+  @include flex(flex-end, center);
+  flex: 1;
+  @include fadeRight(0.3s);
+}
+
+.hero__circle {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: $blue-light;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.hero__person {
+  position: relative;
+  z-index: 1;
+  height: 520px;
+  object-fit: contain;
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero__card {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  background: $white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 14px 28px;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  animation: slideCard 0.8s ease forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+
+  &-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: $blue;
+  }
+
+  &-role {
+    font-size: 13px;
+    color: $gray;
+    margin-top: 4px;
+  }
+}
