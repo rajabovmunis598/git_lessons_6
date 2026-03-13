@@ -1,448 +1,728 @@
-$blue:      #0f3460;
+$blue: #0f3460;
 $blue-dark: #0a2240;
-$blue-bg:   #dbeafe;
-$white:     #ffffff;
-$gray:      #666;
-$font:      'Georgia', serif;
+$blue-bg: #dbeafe;
+$white: #ffffff;
+$gray: #666;
+$font: 'Georgia', serif;
 
 @mixin flex($align: center, $justify: flex-start, $gap: 0) {
-  display: flex;
-  align-items: $align;
-  justify-content: $justify;
-  gap: $gap;
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
 }
 
 @mixin fadeUp($delay: 0s) {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.7s ease forwards;
-  animation-delay: $delay;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.7s ease forwards;
+    animation-delay: $delay;
 }
 
 @mixin fadeRight($delay: 0s) {
-  opacity: 0;
-  transform: translateX(40px);
-  animation: fadeRight 0.8s ease forwards;
-  animation-delay: $delay;
+    opacity: 0;
+    transform: translateX(40px);
+    animation: fadeRight 0.8s ease forwards;
+    animation-delay: $delay;
 }
 
 @mixin card {
-  background: $white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    background: $white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 }
 
 @keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeRight {
-  to { opacity: 1; transform: translateX(0); }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 @keyframes slideCard {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: $font;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font;
 }
 
 .scroll-hidden {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
 
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero {
-  min-height: 100vh;
-  background: $white;
-  padding: 0 60px;
+    min-height: 100vh;
+    background: $white;
+    padding: 0 60px;
 
-  &__content {
-    @include flex(center, space-between, 40px);
-    padding-top: 40px;
-  }
+    &__content {
+        @include flex(center, space-between, 40px);
+        padding-top: 40px;
+    }
 }
 
 .nav {
-  @include flex(center, space-between);
-  padding: 20px 0;
-  @include fadeUp(0s);
+    @include flex(center, space-between);
+    padding: 20px 0;
+    @include fadeUp(0s);
 
-  &__logo { @include flex(center, flex-start, 8px); }
+    &__logo {
+        @include flex(center, flex-start, 8px);
+    }
 
-  &__logo-icon {
-    width: 32px;
-    height: 32px;
-    background: $blue;
-    color: $white;
-    border-radius: 50%;
-    @include flex(center, center);
-    font-size: 14px;
-    font-weight: 700;
-  }
+    &__logo-icon {
+        width: 32px;
+        height: 32px;
+        background: $blue;
+        color: $white;
+        border-radius: 50%;
+        @include flex(center, center);
+        font-size: 14px;
+        font-weight: 700;
+    }
 
-  &__logo-text {
-    font-size: 18px;
-    font-weight: 700;
-    color: $blue;
-  }
+    &__logo-text {
+        font-size: 18px;
+        font-weight: 700;
+        color: $blue;
+    }
 
-  &__links { @include flex(center, center, 32px); }
+    &__links {
+        @include flex(center, center, 32px);
+    }
 
-  &__link {
-    font-size: 13px;
-    color: $gray;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    &:hover { color: $blue; }
-  }
+    &__link {
+        font-size: 13px;
+        color: $gray;
+        text-decoration: none;
+        letter-spacing: 0.5px;
 
-  &__search {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: $gray;
-  }
+        &:hover {
+            color: $blue;
+        }
+    }
+
+    &__search {
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: $gray;
+    }
 }
 
 .hero__left {
-  max-width: 520px;
-  @include flex(flex-start, center, 0);
-  flex-direction: column;
+    max-width: 520px;
+    @include flex(flex-start, center, 0);
+    flex-direction: column;
 }
 
 .hero__badge {
-  @include flex(center, flex-start, 10px);
-  margin-bottom: 24px;
-  @include fadeUp(0.1s);
+    @include flex(center, flex-start, 10px);
+    margin-bottom: 24px;
+    @include fadeUp(0.1s);
 
-  &-new {
-    background: $blue;
-    color: $white;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 20px;
-  }
+    &-new {
+        background: $blue;
+        color: $white;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+    }
 
-  &-text { font-size: 13px; color: $gray; }
+    &-text {
+        font-size: 13px;
+        color: $gray;
+    }
 }
 
 .hero__title {
-  font-size: 54px;
-  font-weight: 900;
-  color: $blue;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  @include fadeUp(0.2s);
+    font-size: 54px;
+    font-weight: 900;
+    color: $blue;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    @include fadeUp(0.2s);
 }
 
 .hero__sub {
-  font-size: 15px;
-  color: $gray;
-  line-height: 1.7;
-  max-width: 400px;
-  margin-bottom: 32px;
-  @include fadeUp(0.3s);
+    font-size: 15px;
+    color: $gray;
+    line-height: 1.7;
+    max-width: 400px;
+    margin-bottom: 32px;
+    @include fadeUp(0.3s);
 }
 
 .hero__btn {
-  padding: 16px 36px;
-  background: $blue;
-  color: $white;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
-  margin-bottom: 48px;
-  animation: pulse 2.5s ease-in-out infinite;
-  @include fadeUp(0.4s);
-  &:hover { background: darken($blue, 8%); }
-}
-
-.hero__trusted {
-  @include fadeUp(0.5s);
-  &-text { font-size: 13px; color: $gray; margin-bottom: 14px; }
-}
-
-.hero__logos {
-  @include flex(center, flex-start, 20px);
-  flex-wrap: wrap;
-}
-
-.hero__logo {
-  height: 28px;
-  object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.6;
-}
-
-.hero__right {
-  position: relative;
-  @include flex(flex-end, center);
-  flex: 1;
-  @include fadeRight(0.3s);
-}
-
-.hero__circle {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  background: $blue-bg;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-}
-
-.hero__person {
-  position: relative;
-  z-index: 1;
-  height: 520px;
-  object-fit: contain;
-}
-
-.hero__card {
-  position: absolute;
-  bottom: 20px;
-  right: 0;
-  background: $white;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 14px 28px;
-  text-align: center;
-  z-index: 2;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  animation: slideCard 0.8s ease forwards;
-  animation-delay: 0.8s;
-  opacity: 0;
-
-  &-name { font-size: 15px; font-weight: 700; color: $blue; }
-  &-role { font-size: 13px; color: $gray; margin-top: 4px; }
-}
-
-.why {
-  @include flex(flex-start, space-between, 60px);
-  padding: 80px 60px;
-  background: $blue-bg;
-
-  &__left { max-width: 260px; }
-  &__title { font-size: 32px; font-weight: 900; color: $blue; line-height: 1.2; margin-bottom: 16px; }
-  &__sub { font-size: 14px; color: $gray; line-height: 1.7; }
-  &__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1; }
-
-  &__card {
-    @include card;
-    @include flex(flex-start, flex-start, 0);
-    flex-direction: column;
-    gap: 10px;
-    transition: all 0.3s ease;
-    &:hover { box-shadow: 0 6px 24px rgba(15,52,96,0.15); transform: translateY(-6px); }
-  }
-
-  &__icon { width: 36px; height: 36px; object-fit: contain; }
-  &__name { font-size: 15px; font-weight: 700; color: $blue; }
-  &__text { font-size: 13px; color: $gray; line-height: 1.6; }
-}
-
-.stats {
-  background: $blue-dark;
-  padding: 60px;
-  text-align: center;
-
-  &__title { font-size: 30px; font-weight: 900; color: $white; margin-bottom: 10px; }
-  &__sub   { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 48px; }
-  &__grid  { @include flex(flex-start, center, 80px); flex-wrap: wrap; }
-  &__item  { @include flex(center, center, 8px); flex-direction: column; }
-  &__num   { font-size: 48px; font-weight: 900; color: $white; }
-  &__label { font-size: 14px; color: rgba(255,255,255,0.6); }
-}
-
-.testi {
-  padding: 80px 60px;
-  background: $blue-bg;
-  text-align: center;
-
-  &__title { font-size: 32px; font-weight: 900; color: $blue; margin-bottom: 40px; }
-  &__grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; }
-
-  &__card {
-    @include card;
-    @include flex(flex-start, flex-start, 0);
-    flex-direction: column;
-    gap: 14px;
-    transition: all 0.3s ease;
-    &:hover { transform: translateY(-6px); box-shadow: 0 8px 28px rgba(15,52,96,0.12); }
-  }
-
-  &__name   { font-size: 15px; font-weight: 700; color: $blue; }
-  &__text   { font-size: 13px; color: $gray; line-height: 1.7; flex: 1; }
-  &__person { @include flex(center, flex-start, 12px); margin-top: 8px; }
-  &__avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
-  &__pname  { font-size: 14px; font-weight: 700; color: $blue; }
-  &__prole  { font-size: 12px; color: $gray; }
-}
-
-.cta {
-  @include flex(center, space-between, 40px);
-  padding: 80px 60px;
-  background: $white;
-
-  &__left {
-    max-width: 460px;
-    @include flex(flex-start, center, 0);
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  &__title { font-size: 32px; font-weight: 900; color: $blue; line-height: 1.2; }
-  &__text  { font-size: 14px; color: $gray; line-height: 1.7; }
-
-  &__btn {
-    @include flex(center, center, 10px);
-    padding: 14px 28px;
+    padding: 16px 36px;
     background: $blue;
     color: $white;
     border: none;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 700;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    &:hover { background: darken($blue, 8%); transform: translateY(-2px); }
-  }
+    margin-bottom: 48px;
+    animation: pulse 2.5s ease-in-out infinite;
+    @include fadeUp(0.4s);
 
-  &__right { flex: 1; @include flex(center, flex-end); }
+    &:hover {
+        background: darken($blue, 8%);
+    }
+}
 
-  &__img {
-    width: 100%;
-    max-width: 320px;
-    border-radius: 12px;
-    object-fit: cover;
-  }
+.hero__trusted {
+    @include fadeUp(0.5s);
+
+    &-text {
+        font-size: 13px;
+        color: $gray;
+        margin-bottom: 14px;
+    }
+}
+
+.hero__logos {
+    @include flex(center, flex-start, 20px);
+    flex-wrap: wrap;
+}
+
+.hero__logo {
+    height: 28px;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.6;
+}
+
+.hero__right {
+    position: relative;
+    @include flex(flex-end, center);
+    flex: 1;
+    @include fadeRight(0.3s);
+}
+
+.hero__circle {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: $blue-bg;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.hero__person {
+    position: relative;
+    z-index: 1;
+    height: 520px;
+    object-fit: contain;
+}
+
+.hero__card {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    background: $white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 14px 28px;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    animation: slideCard 0.8s ease forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
+
+    &-name {
+        font-size: 15px;
+        font-weight: 700;
+        color: $blue;
+    }
+
+    &-role {
+        font-size: 13px;
+        color: $gray;
+        margin-top: 4px;
+    }
+}
+
+.why {
+    @include flex(flex-start, space-between, 60px);
+    padding: 80px 60px;
+    background: $blue-bg;
+
+    &__left {
+        max-width: 260px;
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: 900;
+        color: $blue;
+        line-height: 1.2;
+        margin-bottom: 16px;
+    }
+
+    &__sub {
+        font-size: 14px;
+        color: $gray;
+        line-height: 1.7;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        flex: 1;
+    }
+
+    &__card {
+        @include card;
+        @include flex(flex-start, flex-start, 0);
+        flex-direction: column;
+        gap: 10px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 6px 24px rgba(15, 52, 96, 0.15);
+            transform: translateY(-6px);
+        }
+    }
+
+    &__icon {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+    }
+
+    &__name {
+        font-size: 15px;
+        font-weight: 700;
+        color: $blue;
+    }
+
+    &__text {
+        font-size: 13px;
+        color: $gray;
+        line-height: 1.6;
+    }
+}
+
+.stats {
+    background: $blue-dark;
+    padding: 60px;
+    text-align: center;
+
+    &__title {
+        font-size: 30px;
+        font-weight: 900;
+        color: $white;
+        margin-bottom: 10px;
+    }
+
+    &__sub {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 48px;
+    }
+
+    &__grid {
+        @include flex(flex-start, center, 80px);
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        @include flex(center, center, 8px);
+        flex-direction: column;
+    }
+
+    &__num {
+        font-size: 48px;
+        font-weight: 900;
+        color: $white;
+    }
+
+    &__label {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+
+.testi {
+    padding: 80px 60px;
+    background: $blue-bg;
+    text-align: center;
+
+    &__title {
+        font-size: 32px;
+        font-weight: 900;
+        color: $blue;
+        margin-bottom: 40px;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        text-align: left;
+    }
+
+    &__card {
+        @include card;
+        @include flex(flex-start, flex-start, 0);
+        flex-direction: column;
+        gap: 14px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 28px rgba(15, 52, 96, 0.12);
+        }
+    }
+
+    &__name {
+        font-size: 15px;
+        font-weight: 700;
+        color: $blue;
+    }
+
+    &__text {
+        font-size: 13px;
+        color: $gray;
+        line-height: 1.7;
+        flex: 1;
+    }
+
+    &__person {
+        @include flex(center, flex-start, 12px);
+        margin-top: 8px;
+    }
+
+    &__avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    &__pname {
+        font-size: 14px;
+        font-weight: 700;
+        color: $blue;
+    }
+
+    &__prole {
+        font-size: 12px;
+        color: $gray;
+    }
+}
+
+.cta {
+    @include flex(center, space-between, 40px);
+    padding: 80px 60px;
+    background: $white;
+
+    &__left {
+        max-width: 460px;
+        @include flex(flex-start, center, 0);
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: 900;
+        color: $blue;
+        line-height: 1.2;
+    }
+
+    &__text {
+        font-size: 14px;
+        color: $gray;
+        line-height: 1.7;
+    }
+
+    &__btn {
+        @include flex(center, center, 10px);
+        padding: 14px 28px;
+        background: $blue;
+        color: $white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: darken($blue, 8%);
+            transform: translateY(-2px);
+        }
+    }
+
+    &__right {
+        flex: 1;
+        @include flex(center, flex-end);
+    }
+
+    &__img {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 12px;
+        object-fit: cover;
+    }
 }
 
 .footer {
-  background: $blue-dark;
-  padding: 60px 60px 30px;
+    background: $blue-dark;
+    padding: 60px 60px 30px;
 
-  &__top {
-    @include flex(flex-start, space-between, 40px);
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
+    &__top {
+        @include flex(flex-start, space-between, 40px);
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-  &__brand { min-width: 160px; }
-  &__logo  { @include flex(center, flex-start, 10px); }
+    &__brand {
+        min-width: 160px;
+    }
 
-  &__logo-icon {
-    width: 34px;
-    height: 34px;
-    background: $white;
-    color: $blue;
-    border-radius: 50%;
-    @include flex(center, center);
-    font-size: 14px;
-    font-weight: 900;
-  }
+    &__logo {
+        @include flex(center, flex-start, 10px);
+    }
 
-  &__logo-text { font-size: 18px; font-weight: 700; color: $white; }
-  &__col       { @include flex(flex-start, flex-start, 0); flex-direction: column; gap: 10px; }
-  &__col-title { font-size: 14px; font-weight: 700; color: $white; margin-bottom: 6px; }
+    &__logo-icon {
+        width: 34px;
+        height: 34px;
+        background: $white;
+        color: $blue;
+        border-radius: 50%;
+        @include flex(center, center);
+        font-size: 14px;
+        font-weight: 900;
+    }
 
-  &__link {
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    transition: color 0.2s;
-    &:hover { color: $white; }
-  }
+    &__logo-text {
+        font-size: 18px;
+        font-weight: 700;
+        color: $white;
+    }
 
-  &__bottom  { @include flex(center, space-between); padding-top: 24px; }
-  &__copy    { font-size: 12px; color: rgba(255,255,255,0.4); }
-  &__socials { @include flex(center, flex-end, 12px); }
+    &__col {
+        @include flex(flex-start, flex-start, 0);
+        flex-direction: column;
+        gap: 10px;
+    }
 
-  &__social {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-    @include flex(center, center);
-    color: $white;
-    text-decoration: none;
-    transition: all 0.2s;
-    &:hover { background: $white; color: $blue; }
-  }
+    &__col-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: $white;
+        margin-bottom: 6px;
+    }
+
+    &__link {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    &__bottom {
+        @include flex(center, space-between);
+        padding-top: 24px;
+    }
+
+    &__copy {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    &__socials {
+        @include flex(center, flex-end, 12px);
+    }
+
+    &__social {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        @include flex(center, center);
+        color: $white;
+        text-decoration: none;
+        transition: all 0.2s;
+
+        &:hover {
+            background: $white;
+            color: $blue;
+        }
+    }
 }
 
 @media (max-width: 500px) {
-  .hero {
-    padding: 0 20px;
-    &__content { flex-direction: column; padding-top: 20px; }
-    &__title   { font-size: 32px; }
-    &__btn     { width: 100%; }
-    &__circle  { width: 280px; height: 280px; }
-    &__person  { height: 300px; }
-    &__card    { right: 10px; bottom: 10px; padding: 10px 16px; }
-  }
+    .hero {
+        padding: 0 20px;
 
-  .nav__links { display: none; }
+        &__content {
+            flex-direction: column;
+            padding-top: 20px;
+        }
 
-  .why {
-    flex-direction: column;
-    padding: 40px 20px;
-    gap: 30px;
-    &__left  { max-width: 100%; }
-    &__title { font-size: 24px; }
-    &__grid  { grid-template-columns: 1fr; }
-  }
+        &__title {
+            font-size: 32px;
+        }
 
-  .stats {
-    padding: 40px 20px;
-    &__title { font-size: 22px; }
-    &__grid  { gap: 40px; }
-    &__num   { font-size: 36px; }
-  }
+        &__btn {
+            width: 100%;
+        }
 
-  .testi {
-    padding: 40px 20px;
-    &__title { font-size: 24px; }
-    &__grid  { grid-template-columns: 1fr; }
-  }
+        &__circle {
+            width: 280px;
+            height: 280px;
+        }
 
-  .cta {
-    flex-direction: column;
-    padding: 40px 20px;
-    &__left  { max-width: 100%; }
-    &__title { font-size: 24px; }
-    &__btn   { width: 100%; justify-content: center; }
-    &__img   { max-width: 100%; }
-  }
+        &__person {
+            height: 300px;
+        }
 
-  .footer {
-    padding: 40px 20px 24px;
-    &__top    { flex-direction: column; gap: 28px; }
-    &__bottom { flex-direction: column; gap: 16px; text-align: center; }
-  }
+        &__card {
+            right: 10px;
+            bottom: 10px;
+            padding: 10px 16px;
+        }
+    }
+
+    .nav__links {
+        display: none;
+    }
+
+    .why {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+
+        &__left {
+            max-width: 100%;
+        }
+
+        &__title {
+            font-size: 24px;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .stats {
+        padding: 40px 20px;
+
+        &__title {
+            font-size: 22px;
+        }
+
+        &__grid {
+            gap: 40px;
+        }
+
+        &__num {
+            font-size: 36px;
+        }
+    }
+
+    .testi {
+        padding: 40px 20px;
+
+        &__title {
+            font-size: 24px;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .cta {
+        flex-direction: column;
+        padding: 40px 20px;
+
+        &__left {
+            max-width: 100%;
+        }
+
+        &__title {
+            font-size: 24px;
+        }
+
+        &__btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        &__img {
+            max-width: 100%;
+        }
+    }
+
+    .footer {
+        padding: 40px 20px 24px;
+
+        &__top {
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        &__bottom {
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+        }
+    }
 }
